@@ -26,7 +26,8 @@ class LinkedListsTest < Minitest::Test
   def test_add_node_to_front
     node = List.new('test')
     node2 = node.prepend('testfront')
-    assert_equal 'testfront', node2.value
+    assert_equal 'test', node.find_by_index(2)
+    assert_equal 'testfront', node.find_by_index(1)
   end
 
   def test_show_tail
@@ -62,6 +63,7 @@ class LinkedListsTest < Minitest::Test
     node.append('test2')
     node.append('test3')
     node.append('test4')
+    assert node.includes?('test')
     assert node.includes?('test2')
   end
 
@@ -70,6 +72,7 @@ class LinkedListsTest < Minitest::Test
     node.prepend('test2')
     node.prepend('test3')
     assert_equal 'test3', node.find_by_index(1)
+    assert_equal 'test2', node.find_by_index(2)
   end
 
   def test_pops_off
@@ -86,6 +89,7 @@ class LinkedListsTest < Minitest::Test
     node.append('test3')
     node.insert('test4', 2)
     assert_equal 'test4', node.find_by_index(2)
+    assert_equal 'test2', node.find_by_index(3)
   end
 
   def test_find_by_index
